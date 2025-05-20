@@ -1,2 +1,32 @@
 # Router_1X3
-RTL design of a 1x3 Packet Router in Verilog, featuring modular design with FIFO buffers, FSM controller, synchronizer, and register logic. Includes testbenches, simulation waveforms, and design documentation. Ideal for learning and demonstrating core digital design concepts in VLSI.
+
+## 📌 Project Overview
+
+This project implements the RTL design of a 1x3 packet router using Verilog HDL. It showcases a modular approach combining FIFO buffers, a Finite State Machine (FSM) controller, a synchronizer, and register logic. The router is designed to receive data from a single input port and route it to one of the three output ports based on the destination address embedded in the packet header.
+
+
+## 🧱 Architecture
+
+The design includes the following key components:
+- **FIFO Buffers (3x)**: Temporary storage for each output port.
+- **FSM Controller**: Governs routing decisions, read/write control, and system coordination.
+- **Synchronizer**: Handles timing issues and maintains data integrity between modules.
+- **Register Logic**: Captures and holds packet data, used in decision-making.
+
+     +-------------------------+
+     |       FSM Controller    |
+     +-----------+-------------+
+                 |
+         +-------v--------+
+         |  Synchronizer  |
+         +-------+--------+
+                 |
+         +-------v--------+
+         |  Register      |
+         +-------+--------+
+                 |
+         +-------v--------+
+         |  Output FIFO 0 | ---> Out_0
+         |  Output FIFO 1 | ---> Out_1
+         |  Output FIFO 2 | ---> Out_2
+         +----------------+
